@@ -34,8 +34,8 @@ useradd devops
 echo "devops" | passwd --stdin devops
 echo "devops" | passwd --stdin ec2-user
 # modify the sudoers file at /etc/sudoers and add entry
-echo "devops"     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
-echo "devops"     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+echo 'devops     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+echo 'devops     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 # this command is to add an entry to file : echo 'PasswordAuthentication yes' | sudo tee -a /etc/ssh/sshd_config
 # the below sed command will find and replace words with spaces "PasswordAuthentication no" to "PasswordAuthentication yes"
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
