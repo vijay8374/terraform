@@ -31,8 +31,8 @@ HEADING "Creating DevOps User"
 # add the user devops
 useradd vijju
 # set password : the below command will avoid re entering the password
-echo "vijju" | passwd --stdin devops
-echo "devops" | passwd --stdin ec2-user
+echo "vijay123" | passwd --stdin devops
+echo "vijay123" | passwd --stdin ec2-user
 # modify the sudoers file at /etc/sudoers and add entry
 echo 'vijay123     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 echo 'vijju     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
