@@ -1,0 +1,3 @@
+- import_playbook: 01.ping.yaml
+- import_playbook: 03.shell_playbook.yaml
+- import_playbook: 12.apache_install.yaml

@@ -1,0 +1,7 @@
+--- # Testing all the servers connectivity and Print msg
+- hosts: web
+  tasks:
+  - name: Pinging servers
+    ansible.builtin.ping:
+  - name: printing debug msg
+    debug: msg="This is First Playbook"

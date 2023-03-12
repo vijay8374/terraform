@@ -1,0 +1,10 @@
+### Declare a variable  at inventory file and print the value.
+
+- name: Print a variable from play
+  hosts: all
+  # vars:
+  #  URL: play.google.com
+  tasks:
+    - name: Print a variable
+      debug:
+        msg: "URL = {{URL}}"

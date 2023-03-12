@@ -1,0 +1,9 @@
+--- # Stop service and Uninstall the Httpd
+- hosts: web
+  become: true
+  tasks:
+    - service: name=httpd state=stopped
+    - yum:
+        name:
+          - httpd
+        state: absent

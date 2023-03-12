@@ -1,0 +1,11 @@
+--- # Defining multiple servers in single Playbook
+- hosts: app
+  tasks:
+  - debug: msg="Hello Appserver"
+
+- hosts: web
+  tasks:
+  - name: Pinging servers
+    ansible.builtin.ping:
+  - debug: msg="Hello Webserver"
+

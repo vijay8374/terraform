@@ -1,0 +1,18 @@
+--- # Conditional Based PlayBook
+    - hosts: webserver
+      remote_user: devops
+      become: yes
+      become_method: sudo
+      connection: ssh
+      gather_facts: yes
+      tasks:
+      - name: If Os is RedHat install git
+        yum:
+          name: git
+          state: present
+        when: ansible_os_family == 'RedHat'
+      - name: If Os is Ubuntu install git
+        apt:
+          name: git
+          state: present
+        when: ansible_os_family == 'Ubuntu'

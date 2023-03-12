@@ -1,0 +1,10 @@
+- name: Error handling
+  hosts: all
+  tasks:
+    - name: Failed task
+      shell: "false"
+      ignore_errors: yes
+
+    - name: Print OK
+      debug:
+        msg: OK

@@ -1,0 +1,13 @@
+## Variable data can be loaded from variable file
+
+- name: Print values from a file
+  hosts: all
+  vars_files:
+    - variables.yml
+  tasks:
+    - name: Print a value from Vars File
+      debug:
+        msg: URL = {{URL}}
+
+# Which variable will be picked up if you have given both VARS_FILES and then VARS ??
+## VARS get more priority than VARS_FILES.

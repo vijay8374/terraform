@@ -1,0 +1,14 @@
+--- # Executing Shell Command
+    - hosts: centos
+      tasks:
+      - name: Execute Shell Commands
+        shell: uname
+        register: uname_result
+
+      - name: print uname variable
+        debug: 
+          var: uname_result
+
+      - name: print uname result
+        debug:
+          msg: "{{ uname_result.stdout }}"

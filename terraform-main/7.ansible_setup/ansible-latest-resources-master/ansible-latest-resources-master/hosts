@@ -1,0 +1,15 @@
+[webserver]
+web ansible_host=172.20.10.81
+
+[webserver:vars]
+URL=web_inventory.google.com
+
+[appserver]
+app ansible_host=172.20.10.164 URL=app_inventory.google.com
+
+[centos]
+web
+app
+
+[all:vars]
+URL=all_inventory.google.com

@@ -1,0 +1,17 @@
+--- # Collecting System info
+- hosts: centos
+  tasks:
+    - name: Kernel
+      debug: msg="Kernel:- {{ ansible_kernel }}"
+    - name: Hostname
+      debug: msg="Hostname- {{ ansible_hostname }}"
+    - name: Distribution
+      debug: msg="Distribution- {{ ansible_distribution }}"
+    - debug: var=ansible_architecture
+    - debug: var=inventory_hostname
+    - debug: var=groups
+    - debug: var=group_names
+    - name: IPv4 Address
+      debug:
+        msg: "IPv4 address: {{ ansible_default_ipv4.address }}"
+    # - debug: var=hostvars

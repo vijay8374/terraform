@@ -1,0 +1,12 @@
+--- # Un Install Apache Service
+- hosts: webserver
+  become: true
+  tasks:
+  - name: Stopping httpd Service
+    service:
+      name: httpd
+      state: stopped      
+  - name: Un Install httpd Package
+    yum: 
+      name: httpd
+      state: absent

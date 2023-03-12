@@ -1,0 +1,10 @@
+--- # Install Apache and Start service without Handler
+- hosts: web
+  become: true
+  tasks:
+    - yum:
+        name:
+          - httpd
+        state: present
+    - service: name=httpd state=started enabled=yes
+    - raw: "echo '<h2> Welcome to Rise 'n' Shine </h2>' | sudo tee /var/www/html/index.html"

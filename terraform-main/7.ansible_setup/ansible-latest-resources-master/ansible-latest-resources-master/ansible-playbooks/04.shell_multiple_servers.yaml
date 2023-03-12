@@ -1,0 +1,25 @@
+--- # Executing Shell Command & Send output of a task to a variable
+    - hosts: web
+      tasks:
+      - name: Execute Shell Commands
+        shell: uname
+        register: uname_result
+
+      - name: Print the data in variable
+        debug:
+          var: uname_result
+
+      - name: Print the data in variable
+        debug:
+          msg: " {{ uname_result.stdout }} "
+
+    - name: Send output of a task to a variable
+      hosts: app
+      tasks:
+      - name: Run ls command
+        shell: ls /tmp
+        register: OUT # OUT is a variable
+
+      - name: Print the data in variable OUT
+        debug:
+          msg: "{{OUT}}"

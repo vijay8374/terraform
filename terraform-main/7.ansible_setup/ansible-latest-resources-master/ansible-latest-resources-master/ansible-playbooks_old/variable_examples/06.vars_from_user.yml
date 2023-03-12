@@ -1,0 +1,12 @@
+## Variable data can be read from USER as well like read command in shell scripting.
+
+- name: Print values read from USER
+  hosts: all
+  vars_prompt:
+    - name: URL
+      prompt: Enter the URL
+      private: no
+  tasks:
+    - name: Print a value from prompt File
+      debug:
+        msg: URL = {{URL}}

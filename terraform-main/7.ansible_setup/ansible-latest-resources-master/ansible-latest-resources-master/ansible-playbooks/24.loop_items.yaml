@@ -1,0 +1,20 @@
+- name: Find the list of file in a directory
+  hosts: all
+  become: yes
+  tasks:
+    - name: Find all the files
+      find:
+        paths: /home/devops/
+        file_type: any
+      register: OUT
+    - name: Print OUT
+      debug:
+        var: OUT
+
+    - name: Delete the files
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{OUT.files}}"
+      become: yes
+

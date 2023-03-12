@@ -1,0 +1,10 @@
+- hosts: all
+  vars:
+    - create_user_file: yes
+    - user: devops
+  tasks:
+  - name: create file for user
+    file:
+      path: /home/{{ user }}/myfile
+      state: touch
+    when: create_user_file

@@ -1,0 +1,13 @@
+--- # Variable data can be loaded from variable file
+- name: Print values from a file
+  hosts: all
+  vars:
+    URL: play.google.com
+  vars_files:
+    - variables.yaml
+  tasks:
+  - name: Print a value from Vars File
+    debug:
+      msg: URL = {{URL}}
+    vars:
+      URL: task.google.com

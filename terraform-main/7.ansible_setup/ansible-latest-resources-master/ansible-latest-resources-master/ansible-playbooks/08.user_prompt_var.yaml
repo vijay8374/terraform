@@ -1,0 +1,16 @@
+- name: Print values read from USER
+  hosts: all
+  vars_prompt:
+  - name: URL
+    prompt: Enter the URL
+    private: no
+  vars:
+    URL: play.google.com
+  vars_files:
+    - variables.yaml
+  tasks:
+  - name: Print a value from user prompt
+    debug:
+      msg: URL = {{URL}}
+    vars:
+      URL: task.google.com
