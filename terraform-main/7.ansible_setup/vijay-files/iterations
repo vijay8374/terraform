@@ -1,0 +1,12 @@
+
+    - name: managing packages
+      hosts: centos
+      become: yes
+      gather_facts: no
+      tasks:
+      - name: installing packages
+        yum:
+          name: "{{item}}"
+          state: present
+        with_items:
+           - [tree ,wget ,zip ,docker]

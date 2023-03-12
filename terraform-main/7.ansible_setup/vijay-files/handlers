@@ -1,0 +1,28 @@
+-  hosts: web-  hosts: web
+   become: yes
+   vars:
+     package: httpd
+   tasks:
+      - name: Install Apache Server
+        yum:
+           name: "{{package}}"
+           state: present
+
+      - name: starting httpd service
+        service:
+           name: "{{package}}"
+           state: started
+
+      - name: copying the file
+        copy:
+           src: index.html
+           dest: /var/www/html/
+
+        notify:
+          - startservice
+   handlers:
+      - name: startservice
+        service:
+          name: "{{package}}"
+          state: restarted
+          enabled: true

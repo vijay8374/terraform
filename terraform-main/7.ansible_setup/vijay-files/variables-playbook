@@ -1,0 +1,14 @@
+- hosts: webserver
+  become: true
+  vars:
+    package: httpd
+  tasks:
+  - name: Install httpd Package
+    yum:
+      name: "{{package}}"
+      state: present
+  - name: Starting httpd Service
+    service:
+      name: "{{package}}"
+      state: started
+      enabled: true
