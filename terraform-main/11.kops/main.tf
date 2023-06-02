@@ -16,7 +16,7 @@ provider "aws" {
 # Create Secutity Group
 
 resource "aws_security_group" "MyLab_Sec_Group" {
-  name        = "MyLab Security Group"
+  name        = "Docker Security Group"
   description = "To allow inbound and outbound traffic to mylab"
   #vpc_id      = aws_vpc.MyLab-VPC.id
 
@@ -54,20 +54,21 @@ data "aws_ami" "aws_linux_2_latest" {
   }
 }
 
-# Create an AWS EC2 Instance to host Nginx, Tomcat and Maven
+# Create an AWS EC2 Instance to host Docker
 
-resource "aws_instance" "VM_Server" {
+resource "aws_instance" "Kops_Node" {
   ami                         = data.aws_ami.aws_linux_2_latest.id
   instance_type               = var.instance_type
   vpc_security_group_ids      = [aws_security_group.MyLab_Sec_Group.id]
   associate_public_ip_address = true
-  user_data                   = file("./scripts/init.sh")
+  user_data                   = file("./scripts/InstallKOPS.sh")
+  iam_instance_profile = "${aws_iam_instance_profile.test_profile.name}"
 
   tags = {
-    Name = "Server"
+    Name = "Kops"
   }
 
   provisioner "local-exec" {
-    command = "echo ${self.private_ip} > private_ip.txt"
+    command = "echo ${self.private_ip} >> private_ip.txt"
   }
 }

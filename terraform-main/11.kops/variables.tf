@@ -1,11 +1,11 @@
 variable "region" {
   type    = string
-  default = "ap-south-1"
+  default = "eu-west-1"
 }
 
 variable "ports" {
   type    = list(number)
-  default = [22,80,8080]
+  default = [22, 80, 8080, 8000]
 }
 
 variable "instance_type" {
@@ -14,5 +14,5 @@ variable "instance_type" {
 }
 
 output "public_ip" {
-  value = aws_instance.VM_Server.public_ip
+  value = aws_instance.Kops_Node.public_ip
 }
